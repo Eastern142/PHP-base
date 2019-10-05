@@ -1,6 +1,6 @@
 <?php
 $title = "Главная страница - страница обо мне";
 $h1 = "Информация обо мне";
-$year = 2019;
+$year = date('Y');
 
 include "template.php";
