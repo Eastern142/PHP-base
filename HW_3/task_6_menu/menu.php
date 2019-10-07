@@ -1,7 +1,7 @@
 <?php
 
 $menuItem = [
-    'Меню1' => 'task_7.php',
+    'Меню1' => 'index.php',
     'Меню2' => 'catalog.php',
     'Меню3' => 'gallery.php',
     'Меню4' => 'contacts.php',
