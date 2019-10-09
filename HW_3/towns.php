@@ -18,5 +18,3 @@ foreach ($towns as $key => $region) {
     $str = mb_substr($str , 0, -2) . '<br>';
     echo "{$str} <br>";
 }
-
-echo '<hr><br>';
