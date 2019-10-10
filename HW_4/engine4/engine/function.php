@@ -1,5 +1,6 @@
 <?php
 
+// Метод рендера содержимого страниц.
 function render($page, $params = [])
 {
     return renderTemplate(LAYOUTS_DIR . "main", [
@@ -8,6 +9,7 @@ function render($page, $params = [])
     ]);
 }
 
+// Метод формирования содержимого страниц.
 function renderTemplate($page, $params = [])
 {
     ob_start();
