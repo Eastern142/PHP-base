@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/config.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/config.php";
 
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
@@ -13,7 +13,6 @@ switch ($page) {
 
     case 'index':
         $params['name'] = 'Клен';
-        _log($params);
         break;
 
     case 'gallery':
@@ -37,7 +36,6 @@ switch ($page) {
             ],
         ];
         break;
-
 
 
 }
