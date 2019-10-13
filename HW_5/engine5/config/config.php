@@ -1,5 +1,6 @@
 <?php
-//Файл констант
+
+// Файл констант.
 define('TEMPLATES_DIR', '../templates/');
 define('LAYOUTS_DIR', 'layouts/');
 
@@ -9,7 +10,7 @@ define('USER', 'root');
 define('PASS', '');
 define('DB', 'shop3');
 
-//Тут же подключим основные функции-модули нашего приложения
+// Тут же подключим основные функции-модули нашего приложения.
 require_once "../engine/functions.php";
 require_once "../engine/log.php";
 require_once "../engine/db.php";

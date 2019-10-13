@@ -1,8 +1,9 @@
 <?php
+
 define("DBNAME", "test");
 $db = @mysqli_connect("localhost", "root", "", DBNAME) or die("Error: " . mysqli_connect_error());
 
-//Автоматическая загрузка дампа в БД
+// Автоматическая загрузка дампа в БД.
 $result = mysqli_query($db, "SHOW TABLES FROM " . DBNAME . ";");
 if (mysqli_num_rows($result) === 0) {
     $dump = file_get_contents("test.sql");
@@ -16,14 +17,14 @@ if (mysqli_num_rows($result) === 0) {
     var_dump("Дамп загружен!");
 }
 
-    $result = @mysqli_query($db, "SELECT * FROM `news` WHERE 1");
+$result = @mysqli_query($db, "SELECT * FROM `news` WHERE 1");
 
 /*
 foreach ($result as $value) {
     echo "<h2>{$value['title']}</h2><p>{$value['prev']}</p>";
 }
 */
-if ($_GET['action']=='delete') {
+if ($_GET['action'] == 'delete') {
     $id = (int)$_GET['id'];
     $result = @mysqli_query($db, "DELETE FROM `news` WHERE id = {$id}");
     header("Location: /");

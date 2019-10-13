@@ -1,4 +1,5 @@
 <?php
+
 $db = @mysqli_connect("localhost", "test", "12345", "test") or die("Error: " . mysqli_connect_error());
 
 $id = (int)$_GET["id"];
@@ -14,8 +15,6 @@ if ($result->num_rows != 0) {
     $row = @mysqli_fetch_assoc($result);
 } else echo "Пусто";
 
-
 echo "<h2><a href='news.php?id={$row['id']}'>{$row['title']}</a></h2><p>{$row['text']}</p>";
-
 
 mysqli_close($db);

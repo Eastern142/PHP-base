@@ -3,11 +3,10 @@
 <div>
     <? foreach ($catalog as $item): ?>
         <div>
-            <?=$item['name']?><br>
-            Цена: <?=$item['price']?><br>
+            <?= $item['name'] ?><br>
+            Цена: <?= $item['price'] ?><br>
             <button>Купить</button>
             <hr>
         </div>
     <? endforeach; ?>
-
 </div>
