@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Shop</title>
+    <link rel="stylesheet" href="<?= STYLESHEET_DIR ?>">
 </head>
 <body>
-<?=$menu?>
-<?=$content?>
+<?= $menu ?>
+<?= $content ?>
 </body>
 </html>

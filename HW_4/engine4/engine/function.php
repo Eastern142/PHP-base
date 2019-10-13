@@ -5,7 +5,7 @@ function render($page, $params = [])
 {
     return renderTemplate(LAYOUTS_DIR . "main", [
         "content" => renderTemplate($page, $params),
-        "menu" => renderTemplate('menu'),
+        "menu" => renderTemplate("menu", $params),
     ]);
 }
 
@@ -28,4 +28,39 @@ function renderTemplate($page, $params = [])
     }
 
     return ob_get_clean();
+}
+
+// Метод формирования меню.
+function renderMenu($menu_items, $result = '')
+{
+    $result .= '<ul>';
+
+    foreach ($menu_items as $item) {
+
+        $result .= '<li><a href="/?page=' . $item['link'] . '">' . $item['title'] . '</a>';
+
+        if (isset($item['submenu'])) {
+            $result .= renderMenu($item['submenu']);
+        }
+
+        $result .= '</li>';
+    }
+
+    $result .= '</ul>';
+
+    return $result;
+}
+
+// Метод формирования изображений галереи.
+function getImageList($dir)
+{
+    $folder_contents = scandir($dir);
+    $result = [];
+
+    foreach ($folder_contents as $item) {
+        if (is_dir($dir . '/' . $item)) continue;
+        array_push($result, $item);
+    }
+
+    return $result;
 }

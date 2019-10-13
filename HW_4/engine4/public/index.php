@@ -9,11 +9,28 @@ if (isset($_GET["page"])) {
     $page = "index";
 }
 
+$params = [
+    'menu_items' => [
+        [
+            'link' => "index",
+            'title' => "Главная"
+        ],
+        [
+            'link' => "catalog",
+            'title' => "Каталог"
+        ],
+        [
+            'link' => "gallery",
+            'title' => "Галерея"
+        ],
+    ]
+];
+
 // Подготовка контента для страниц.
-$params = ["login" => "admin"];
 switch ($page) {
     case "index":
         $params["name"] = "Клен";
+        $params["login"] = "admin";
         break;
     case "catalog":
         $params["catalog"] = [
@@ -34,6 +51,8 @@ switch ($page) {
             ],
         ];
         break;
+    case "gallery":
+        $params["image_list"] = getImageList(GALLERY_IMG_DIR);
 
 // Контент для frontend части.
 //    case "apicatalog":

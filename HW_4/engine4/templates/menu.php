@@ -1,3 +1,3 @@
-<a href="/">Главная</a>
-<a href="/?page=catalog">Каталог</a>
-<br>
+<nav>
+    <?= renderMenu($menu_items); ?>
+</nav>
