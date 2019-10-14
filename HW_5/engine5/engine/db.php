@@ -1,5 +1,21 @@
 <?php
 
+function dumpLoad()
+{
+    $result = mysqli_query(getDb(), "SHOW TABLES FROM " . DB . ";");
+    if (mysqli_num_rows($result) === 0) {
+        $dump = file_get_contents("../data/shop.sql");
+
+        $a = 0;
+        while ($b = strpos($dump, ";", $a + 1)) {
+            $a = substr($dump, $a + 1, $b - $a);
+            mysqli_query(getDb(), $a);
+            $a = $b;
+        }
+        var_dump("Дамп загружен!");
+    }
+}
+
 /*
  * Функция, осуществляющая соединение с базой данных и возвращающая его
  * static, позволяет сохранить состояние и вернуть уже текущее соединение

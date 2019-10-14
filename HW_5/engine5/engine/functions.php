@@ -8,56 +8,66 @@ function prepareVariables($page)
 // Переменная для ВСЕХ страниц.
     $params = ['login' => 'admin'];
 
-// Для каждой страницы готовим массив со своим набором переменных
-// для подстановки их в соотвествующий шаблон.
+// Для каждой страницы готовим массив со своим набором переменных для подстановки их в соотвествующий шаблон.
     switch ($page) {
         case 'index':
             $params['name'] = 'Клен';
             break;
 
-        case 'newspage':
-            $content = getNewsContent($_GET['id']);
-            $params['prev'] = $content['prev'];
-            $params['text'] = $content['text'];
+        case 'catalog':
+            $params['catalog_item'] = getCatalog();
+            break;
+//            $params['catalog'] = [
+//                [
+//                    'name' => 'Пицца',
+//                    'price' => 24
+//                ],
+//                [
+//                    'name' => 'Чай',
+//                    'price' => 1
+//                ],
+//                [
+//                    'name' => 'Яблоко',
+//                    'price' => 12
+//                ],
+//            ];
+//            break;
+
+        case 'gallery':
+            $params['images'] = getImages();
+            break;
+
+        case 'gallery_big':
+            $image_big = getFullImage($_GET['id'], $_GET['action']);
+            $params['image_big'] = $image_big;
             break;
 
         case 'news':
             $params['news'] = getNews();
             break;
 
-        case 'catalog':
-            $params['catalog'] = [
-                [
-                    'name' => 'Пицца',
-                    'price' => 24
-                ],
-                [
-                    'name' => 'Чай',
-                    'price' => 1
-                ],
-                [
-                    'name' => 'Яблоко',
-                    'price' => 12
-                ],
-            ];
+        case 'newspage':
+            $content = getNewsContent($_GET['id']);
+            $params['prevew'] = $content['prevew'];
+            $params['full'] = $content['full'];
             break;
 
-        case 'apicatalog':
-            $params['catalog'] = [
-                [
-                    'name' => 'Пицца',
-                    'price' => 24
-                ],
-
-                [
-                    'name' => 'Яблоко',
-                    'price' => 12
-                ],
-            ];
-
-            echo json_encode($params, JSON_UNESCAPED_UNICODE);
-            exit;
-            break;
+//        case 'apicatalog':
+//            $params['catalog'] = [
+//                [
+//                    'name' => 'Пицца',
+//                    'price' => 24
+//                ],
+//
+//                [
+//                    'name' => 'Яблоко',
+//                    'price' => 12
+//                ],
+//            ];
+//            var_dump($params);
+//            echo json_encode($params, JSON_UNESCAPED_UNICODE);
+//            exit;
+//            break;
 
     }
 
