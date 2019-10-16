@@ -10,7 +10,6 @@ function render($page, $params = [])
     );
 }
 
-
 function renderTemplate($page, $params = [])
 {
     ob_start();

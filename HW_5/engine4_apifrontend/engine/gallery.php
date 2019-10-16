@@ -1,4 +1,5 @@
 <?php
-function getGallery() {
-    return array_splice(scandir('gallery_img/small/'),2);
+function getGallery()
+{
+    return array_splice(scandir('gallery_img/small/'), 2);
 }

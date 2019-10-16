@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/config.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/config.php";
 
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
@@ -38,10 +38,6 @@ switch ($page) {
         ];
         break;
 
-
-
 }
 
 echo render($page, $params);
-
-
