@@ -37,9 +37,10 @@ function prepareVariables($page)
             $params['images'] = getImages();
             break;
 
-        case 'gallery_big':
-            $image_big = getFullImage($_GET['id'], $_GET['action']);
-            $params['image_big'] = $image_big;
+        case 'image_big':
+            $id = $_GET['id'];
+            addLike($id);
+            $params['image_big'] = getFullImage($id);
             break;
 
         case 'news':
