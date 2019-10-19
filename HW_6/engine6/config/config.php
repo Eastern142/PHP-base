@@ -1,14 +1,19 @@
 <?php
-//Файл констант
-define('TEMPLATES_DIR', dirname(__DIR__) . '/templates/');
+
+/* Файл констант. */
+define('TEMPLATES_DIR', '../templates/');
 define('LAYOUTS_DIR', 'layouts/');
+define('IMG_DIR', '/img/');
+define('STYLE_DIR', '/css/');
 
-include "db.php";
+// Подключим конфигурационный файл базы данных.
+include "db_config.php";
 
-//Тут же подключим основные функции-модули нашего приложения
-require_once dirname(__DIR__) . "/engine/functions.php";
-require_once dirname(__DIR__) . "/engine/log.php";
-require_once dirname(__DIR__) . "/engine/db.php";
-require_once dirname(__DIR__) . "/engine/news.php";
-require_once dirname(__DIR__) . "/engine/gallery.php";
-require_once dirname(__DIR__) . "/engine/feedback.php";
+// Подключим основные функции-модули приложения.
+require_once "../engine/functions.php";
+require_once "../engine/db.php";
+require_once "../engine/goods.php";
+require_once "../engine/feedback.php";
+require_once "../engine/gallery.php";
+require_once "../engine/news.php";
+require_once "../engine/log.php";

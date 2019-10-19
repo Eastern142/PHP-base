@@ -1,28 +1,30 @@
 <?php
-function getGallery()
+
+function getImages()
 {
-    $sql = "SELECT * FROM images ORDER BY likes DESC";
-    $news = getAssocResult($sql);
-    return $news;
+    $sql = "SELECT * FROM gallery ORDER BY likes DESC";
+    $images = getAssocResult($sql);
+    return $images;
 }
 
-
-function getOneImage($id)
+function getFullImage($id)
 {
+
     $id = (int)$id;
 
-    $sql = "SELECT * FROM images WHERE id = {$id}";
-    $news = getAssocResult($sql);
+    $sql = "SELECT * FROM gallery WHERE id = {$id}";
+    $image_big = getAssocResult($sql);
 
+    // В случае если изображения нет, вернем пустое значение.
     $result = [];
-    if (isset($news[0]))
-        $result = $news[0];
+    if (isset($image_big[0]))
+        $result = $image_big[0];
 
     return $result;
 }
 
 function addLike($id)
 {
-    $sql = "UPDATE `images` SET likes=likes+1 WHERE id={$id}";
+    $sql = "UPDATE gallery SET likes = likes + 1 WHERE id = {$id}";
     executeQuery($sql);
 }

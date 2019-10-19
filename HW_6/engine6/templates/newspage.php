@@ -1,2 +1,4 @@
-<h1><?=$prev?></h1>
-<p><?=$text?></p>
+<div>
+    <h3><?= $prevew ?></h3>
+    <p><?= $full ?></p>
+</div>

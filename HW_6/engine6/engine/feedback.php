@@ -1,20 +1,16 @@
 <?php
-function getAllFeedback() {
-    $sql = "SELECT * FROM `feedback` ORDER BY id DESC";
-    return getAssocResult($sql);
-}
 
-function doFeedbackAction(&$params, $action, $id) {
-    if ($_GET['message'] == 1) {$params['error'] = "Отзыв добавлен!";}
-    if ($_GET['message'] == 2) {$params['error'] = "Отзыв удален!";}
+function getFeedbacks($id)
+{
 
-    if ($action == "delete") {
-        var_dump("Удалим отзыв с id={$id}");
-        die();
-    }
-    if ($action == "add") {
-        var_dump("Добавим отзыв!");
-        die();
-    }
+    $id = (int)$id;
 
+    $sql = "SELECT * FROM feedback WHERE for_goods = {$id}";
+    $feedbacks = getAssocResult($sql);
+
+    $result = [];
+    if (isset($feedbacks[0]))
+        $result = $feedbacks;
+
+    return $result;
 }

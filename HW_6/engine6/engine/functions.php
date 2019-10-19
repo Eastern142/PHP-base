@@ -1,77 +1,46 @@
 <?php
+
 /*
- * Функция подготовки переменных для передачи их в шаблон
+ * Функция подготовки переменных для передачи их в шаблон.
  */
 function prepareVariables($page, $action, $id)
 {
-//Переменная для ВСЕХ страниц
-    $params = ['login' => 'admin'];
+// Переменная для ВСЕХ страниц.
+//    $params = ['login' => 'admin'];
+    $params = [];
 
-//Для каждой страницы готовим массив со своим набором переменных
-//для подстановки их в соотвествующий шаблон
+// Для каждой страницы готовим массив со своим набором переменных для подстановки их в соотвествующий шаблон.
     switch ($page) {
         case 'index':
             $params['name'] = 'Клен';
             break;
 
-        case 'newspage':
-            $content = getNewsContent($_GET['id']);
-            $params['prev'] = $content['prev'];
-            $params['text'] = $content['text'];
+        case 'goods':
+            $params['goods'] = getGoods();
+            break;
+
+        case 'goods_item':
+            $params['goods_item'] = getGoodsItem($id);
+            $params['feedbacks'] = getFeedbacks($id);
+            break;
+
+        case 'gallery':
+            $params['images'] = getImages();
+            break;
+
+        case 'gallery_item':
+            addLike($id);
+            $params['images_item'] = getFullImage($id);
             break;
 
         case 'news':
             $params['news'] = getNews();
             break;
 
-        case 'gallery':
-            $params['images'] = getGallery();
-            break;
-
-        case 'image':
-            $id = $_GET['id'];
-            addLike($id);
-            $params['image'] = getOneImage($id);
-            break;
-
-        case 'feedback':
-            doFeedbackAction($params, $action, $id);
-
-            $params['feedback'] = getAllFeedback();
-            break;
-
-        case 'catalog':
-            $params['catalog'] = [
-                [
-                    'name' => 'Пицца',
-                    'price' => 24
-                ],
-                [
-                    'name' => 'Чай',
-                    'price' => 1
-                ],
-                [
-                    'name' => 'Яблоко',
-                    'price' => 12
-                ],
-            ];
-            break;
-
-        case 'apicatalog':
-            $params['catalog'] = [
-                [
-                    'name' => 'Пицца',
-                    'price' => 24
-                ],
-
-                [
-                    'name' => 'Яблоко',
-                    'price' => 12
-                ],
-            ];
-
-            echo json_encode($params, JSON_UNESCAPED_UNICODE);
-            exit;
+        case 'newspage':
+            $content = getNewsContent($id);
+            $params['prevew'] = $content['prevew'];
+            $params['full'] = $content['full'];
             break;
 
     }
@@ -87,7 +56,6 @@ function render($page, $params = [])
         ]
     );
 }
-
 
 function renderTemplate($page, $params = [])
 {
