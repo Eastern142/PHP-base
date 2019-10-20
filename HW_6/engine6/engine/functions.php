@@ -12,7 +12,7 @@ function prepareVariables($page, $action, $id)
 // Для каждой страницы готовим массив со своим набором переменных для подстановки их в соотвествующий шаблон.
     switch ($page) {
         case 'index':
-            $params['name'] = 'Клен';
+            $params['name'] = 'Power To Play';
             break;
 
         case 'goods':
@@ -21,7 +21,6 @@ function prepareVariables($page, $action, $id)
 
         case 'goods_item':
             $params['goods_item'] = getGoodsItem($id);
-            $params['feedbacks'] = getFeedbacks($id);
             break;
 
         case 'gallery':
@@ -43,6 +42,15 @@ function prepareVariables($page, $action, $id)
             $params['full'] = $content['full'];
             break;
 
+        case 'feedback':
+            doFeedbackAction($params, $action, $id);
+            $params['feedback'] = getAllFeedback();
+            break;
+
+        case 'basket':
+            $params['basket'] = [];
+            break;
+
     }
 
     return $params;
@@ -50,7 +58,7 @@ function prepareVariables($page, $action, $id)
 
 function render($page, $params = [])
 {
-    return renderTemplate(LAYOUTS_DIR . 'main', [
+    return renderTemplate(LAYOUTS_DIR . 'layout', [
             'content' => renderTemplate($page, $params),
             'menu' => renderTemplate('menu')
         ]

@@ -1,9 +1,9 @@
 <?php
 
-// Точка входа в приложение.
+/* Точка входа в приложение. */
 
 // Подключим файл с константами настроек.
-require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/main.php";
 
 $url_array = explode("/", $_SERVER['REQUEST_URI']);
 

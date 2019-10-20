@@ -3,15 +3,16 @@
 function dumpLoad()
 {
     $result = mysqli_query(getDb(), "SHOW TABLES FROM " . DB . ";");
+
     if (mysqli_num_rows($result) === 0) {
         $dump = file_get_contents("../data/shop.sql");
-
         $a = 0;
         while ($b = strpos($dump, ";", $a + 1)) {
             $a = substr($dump, $a + 1, $b - $a);
             mysqli_query(getDb(), $a);
             $a = $b;
         }
+
         var_dump("Дамп загружен!");
     }
 }
@@ -23,7 +24,6 @@ function dumpLoad()
  */
 function getDb()
 {
-
     static $db = null;
 
     if (is_null($db)) {
@@ -48,8 +48,8 @@ function closeDb()
 function executeQuery($sql)
 {
     $db = getDb();
-
     $result = @mysqli_query($db, $sql) or die(mysqli_error($db));
+
     return $result;
 }
 
@@ -63,7 +63,10 @@ function getAssocResult($sql)
     $db = getDb();
     $result = @mysqli_query($db, $sql) or die(mysqli_error($db));
     $array_result = [];
-    while ($row = mysqli_fetch_assoc($result))
+
+    while ($row = mysqli_fetch_assoc($result)) {
         $array_result[] = $row;
+    }
+
     return $array_result;
 }

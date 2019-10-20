@@ -4,14 +4,13 @@ function getGoods()
 {
     $sql = "SELECT * FROM goods";
     $goods = getAssocResult($sql);
+
     return $goods;
 }
 
 function getGoodsItem($id)
 {
-
     $id = (int)$id;
-
     $sql = "SELECT * FROM goods WHERE id = {$id}";
     $goods_item = getAssocResult($sql);
 

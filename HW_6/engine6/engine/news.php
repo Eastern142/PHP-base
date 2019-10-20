@@ -4,13 +4,13 @@ function getNews()
 {
     $sql = "SELECT * FROM news";
     $news = getAssocResult($sql);
+
     return $news;
 }
 
 function getNewsContent($id)
 {
     $id = (int)$id;
-
     $sql = "SELECT * FROM news WHERE id = {$id}";
     $news = getAssocResult($sql);
 
