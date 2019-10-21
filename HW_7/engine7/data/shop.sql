@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 19 2019 г., 14:39
+-- Время создания: Окт 22 2019 г., 01:26
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.1.32
 
@@ -25,26 +25,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `basket`
+--
+
+CREATE TABLE `basket` (
+  `id` int(11) NOT NULL,
+  `session_id` text NOT NULL,
+  `goods_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `feedback`
 --
 
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `feedback` text NOT NULL,
-  `for_goods` int(11) NOT NULL
+  `feedback` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `feedback`
 --
 
-INSERT INTO `feedback` (`id`, `name`, `feedback`, `for_goods`) VALUES
-(1, 'Игорь', 'Очень вкусная пицца. Всем рекомендую ее.', 1),
-(2, 'Дмитрий', 'Чай волшебный с насыщенным вкусом.', 2),
-(3, 'Александр', 'Сочное яблоко.', 3),
-(4, 'Сергей', 'Пицца огонь.', 1),
-(5, 'Петр', 'Чай хорош.', 2);
+INSERT INTO `feedback` (`id`, `name`, `feedback`) VALUES
+(1, 'Игорь', 'Отличный магазин. Доволен.'),
+(2, 'Дмитрий', 'Отличные ноутбуки и магазин.');
 
 -- --------------------------------------------------------
 
@@ -55,7 +63,7 @@ INSERT INTO `feedback` (`id`, `name`, `feedback`, `for_goods`) VALUES
 CREATE TABLE `gallery` (
   `id` int(11) NOT NULL,
   `filename` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `likes` int(11) NOT NULL
+  `likes` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -63,21 +71,21 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`id`, `filename`, `likes`) VALUES
-(1, '01.jpg', 0),
-(2, '02.jpg', 0),
-(3, '03.jpg', 9),
-(4, '04.jpg', 0),
-(5, '05.jpg', 0),
-(6, '06.jpg', 0),
-(7, '07.jpg', 0),
-(8, '08.jpg', 0),
-(9, '09.jpg', 13),
-(10, '10.jpg', 1),
-(11, '11.jpg', 1),
-(12, '12.jpg', 1),
-(13, '13.jpg', 37),
-(14, '14.jpg', 2),
-(15, '15.jpg', 1);
+(1, 'GT63TITAN1.png', 5),
+(2, 'GT63TITAN2.png', 1),
+(3, 'GT63TITAN3.png', 1),
+(4, 'GT63TITAN4.png', 0),
+(5, 'GT63TITAN5.png', 0),
+(6, 'GT75TITAN1.png', 0),
+(7, 'GT75TITAN2.png', 0),
+(8, 'GT75TITAN3.png', 0),
+(9, 'GT75TITAN4.png', 0),
+(10, 'GT75TITAN5.png', 0),
+(11, 'GT83TITAN1.png', 0),
+(12, 'GT83TITAN2.png', 0),
+(13, 'GT83TITAN3.png', 0),
+(14, 'GT83TITAN4.png', 0),
+(15, 'GT83TITAN5.png', 0);
 
 -- --------------------------------------------------------
 
@@ -87,20 +95,20 @@ INSERT INTO `gallery` (`id`, `filename`, `likes`) VALUES
 
 CREATE TABLE `goods` (
   `id` int(11) NOT NULL,
-  `goods_name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `goods_price` int(11) NOT NULL,
-  `goods_img` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `goods_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+  `image` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `price` int(11) NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `goods`
 --
 
-INSERT INTO `goods` (`id`, `goods_name`, `goods_price`, `goods_img`, `goods_description`) VALUES
-(1, 'Пицца', 24, '01.jpg', 'Пицца «Американо» – это сытное лакомство, от которого просто невозможно отказаться. Она имеет собственное лицо и совсем не похожа на свою итальянскую родственницу. Американцы создали продукт по своим меркам и гордятся этим.'),
-(2, 'Чай', 12, '02.jpg', 'Пуэр – это очень нестандартный и вкусный чай, родом из Китая. Чем он старше – тем вкуснее. Этот вид чая готовят по сложной технологии. Листья обрабатывают специальными настоями. Затем добавляют бактерии, чтобы чай ферментировался. После этого кладут в специальные ямы с настоем на несколько лет!'),
-(3, 'Яблоко', 8, '03.jpg', 'Яблоко — сочный кисло-сладкий плод яблони, который употребляется в пищу в свежем виде, служит сырьём в кулинарии и для приготовления напитков. Происходит из Центральной Азии, где до сих пор произрастает дикорастущий предок яблони домашней — яблоня Сиверса.');
+INSERT INTO `goods` (`id`, `image`, `name`, `price`, `description`) VALUES
+(1, 'GT63TITAN1.png', 'MSI GT63 TITAN', 2500, 'Представляем ноутбук MSI с шестиядерным процессором Intel: прирост производительности за счет дополнительных ядер достигает 40%. Чем больше ядер, тем комфортнее играть!'),
+(2, 'GT75TITAN1.png', 'MSI GT75 TITAN', 2700, 'MSI GT75 Titan — машина с механической клавиатурой для гейминга высокого уровня, где эргономика и высокая производительность может стоить победы.'),
+(3, 'GT83TITAN1.png', 'MSI GT83 TITAN', 3200, 'Эта геймерская платформа построена на самом последнем процессоре Intel Core i7-8850H с максимальной тактовой частотой 4,3 ГГц и двух топовых видеокартах GeForce GTX 1080.');
 
 -- --------------------------------------------------------
 
@@ -126,6 +134,12 @@ INSERT INTO `news` (`id`, `title`, `prevew`, `full`) VALUES
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `basket`
+--
+ALTER TABLE `basket`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `feedback`
@@ -156,10 +170,16 @@ ALTER TABLE `news`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `basket`
+--
+ALTER TABLE `basket`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `gallery`
