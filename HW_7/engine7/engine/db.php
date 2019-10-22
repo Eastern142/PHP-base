@@ -1,6 +1,8 @@
 <?php
 
 /* Файл с функциями базы данных */
+
+// Функция автоматически загружает дамп БД из указанного файла
 function dumpLoad()
 {
     $result = mysqli_query(getDb(), "SHOW TABLES FROM " . DB . ";");

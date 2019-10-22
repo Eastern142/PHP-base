@@ -1,6 +1,7 @@
 <?php
 
 /* Файл с функциями отзывов */
+
 function doFeedbackAction(&$params, $action, $id)
 {
     /* 2-й вариант подключения массива ошибок для страницы "Отзывы" */
@@ -55,19 +56,21 @@ function doFeedbackAction(&$params, $action, $id)
     }
 }
 
+// Функция возвращает массив всех отзывов
 function getAllFeedback()
 {
-    $sql = "SELECT * FROM feedback";
+    $sql = "SELECT * FROM `feedback`";
 
     return getAssocResult($sql);
 }
 
+// Функция возвращает результат выполнения sql запроса на добавление отзыва к общему массиву
 function addFeedBack()
 {
     $db = getDb();
     $name = mysqli_real_escape_string($db, strip_tags(htmlspecialchars($_POST['name'])));
     $message = mysqli_real_escape_string($db, strip_tags(htmlspecialchars($_POST['message'])));
-    $sql = "INSERT INTO feedback (name, feedback) VALUES ('{$name}', '{$message}')";
+    $sql = "INSERT INTO `feedback` (`name`, `feedback`) VALUES ('{$name}', '{$message}')";
     $result = executeQuery($sql);
 
     if (mysqli_affected_rows(getDb()) != 1) {
@@ -77,10 +80,11 @@ function addFeedBack()
     return $result;
 }
 
+// Функция возвращает результат выполнения sql запроса на удаление отзыва из общего массива
 function deleteFeedback($id)
 {
     $id = (int)$id;
-    $sql = "DELETE FROM feedback WHERE id = {$id}";
+    $sql = "DELETE FROM `feedback` WHERE `id` = {$id}";
     $result = executeQuery($sql);
 
     if (mysqli_affected_rows(getDb()) != 1) {
@@ -90,12 +94,13 @@ function deleteFeedback($id)
     return $result;
 }
 
+// Функция возвращает результат выполнения sql запроса на редактировани отзыва
 function updateFeedback($id)
 {
     $db = getDb();
     $name = mysqli_real_escape_string($db, strip_tags(htmlspecialchars($_POST['name'])));
     $message = mysqli_real_escape_string($db, strip_tags(htmlspecialchars($_POST['message'])));
-    $sql = "UPDATE feedback SET name = '{$name}', feedback = '{$message}' WHERE id = {$id}";
+    $sql = "UPDATE `feedback` SET `name` = '{$name}', `feedback` = '{$message}' WHERE `id` = {$id}";
     $result = executeQuery($sql);
 
     if (mysqli_affected_rows(getDb()) != 1) {
@@ -105,10 +110,11 @@ function updateFeedback($id)
     return $result;
 }
 
+// Функция возвращает выбранный для редактирования отзыв
 function getFeedback($id)
 {
     $id = (int)$id;
-    $sql = "SELECT * FROM feedback WHERE id = {$id}";
+    $sql = "SELECT * FROM `feedback` WHERE `id` = {$id}";
     $result = getAssocResult($sql)[0];
 
     if (mysqli_affected_rows(getDb()) != 1) {

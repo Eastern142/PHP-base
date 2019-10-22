@@ -1,6 +1,7 @@
 <?php
 
 /* Файл с функциями корзины */
+
 function getBasket()
 {
     $session_id = session_id();

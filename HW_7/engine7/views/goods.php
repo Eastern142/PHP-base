@@ -1,5 +1,4 @@
 <h2>Каталог</h2>
-<!--<div id="--><?//= $item['id'] ?><!--"></div>-->
 <div>
     <? foreach ($goods as $item): ?>
         <div>
@@ -12,19 +11,18 @@
         </div>
     <? endforeach; ?>
 </div>
-
 <script>
-    let buttons = document.querySelectorAll('.buy');
+  let buttons = document.querySelectorAll('.buy');
 
-    buttons.forEach((elem) => {
-      elem.addEventListener('click', () => {
-        let id = elem.getAttribute('data-id');
-        (async () => {
-          const response = await fetch('/api/buy/' + id);
-          const answer = await response.json();
-          document.getElementById('count').innerText = answer.count;
-          // document.getElementById(id).remove();
-        })();
-      })
-    });
+  buttons.forEach((elem) => {
+    elem.addEventListener('click', () => {
+      let id = elem.getAttribute('data-id');
+      (async () => {
+        const response = await fetch('/api/buy/' + id);
+        const answer = await response.json();
+        document.getElementById('count').innerText = answer.count;
+        // document.getElementById(id).remove();
+      })();
+    })
+  });
 </script>

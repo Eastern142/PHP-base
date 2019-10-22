@@ -23,10 +23,10 @@ const ERR_CODE = [
 
 // Подключение основных функций-модулей приложения
 // Можно подключить и в public/index.php
-require_once "../engine/auth.php";
 require_once "../engine/controller.php";
 require_once "../engine/core.php";
 require_once "../engine/db.php";
+require_once "../engine/auth.php";
 require_once "../engine/goods.php";
 require_once "../engine/gallery.php";
 require_once "../engine/news.php";
