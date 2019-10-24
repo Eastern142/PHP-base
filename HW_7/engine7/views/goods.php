@@ -21,7 +21,6 @@
         const response = await fetch('/api/buy/' + id);
         const answer = await response.json();
         document.getElementById('count').innerText = answer.count;
-        // document.getElementById(id).remove();
       })();
     })
   });

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 22 2019 г., 23:57
+-- Время создания: Окт 24 2019 г., 18:20
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.1.32
 
@@ -72,7 +72,7 @@ CREATE TABLE `gallery` (
 
 INSERT INTO `gallery` (`id`, `filename`, `likes`) VALUES
 (1, 'GT63TITAN1.png', 7),
-(2, 'GT63TITAN2.png', 2),
+(2, 'GT63TITAN2.png', 6),
 (3, 'GT63TITAN3.png', 1),
 (4, 'GT63TITAN4.png', 0),
 (5, 'GT63TITAN5.png', 0),
@@ -150,8 +150,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `login`, `password`, `hash`) VALUES
 (1, 'admin', '$2y$10$ER/3u9uaqEQ/sKN/9/ynVOCCBSvRFgJiWNCYCHXyZuRXGt8EnKM0i', '7411374705daf19495497e1.21344534'),
-(2, 'Brian', '$2y$10$iN50QxLtRM8P//LZfSR7/.Pqlp687irGxObEUyuKx1gI2N6MLqSvW', '12731520535daf6a818a0582.42984422'),
-(3, 'Игорь', '$2y$10$FzUIyldLzaZ7OZaOIy4UAeILcSGoxIvXKA4iusARMuc1fTtX306Jq', '4311430695daf6b48d10f68.75439729');
+(20, 'Brian', '$2y$10$tc88kfUaZ2ywJ6h6lDvEn.wGxr/DtTkAfy2EApkBnz.iwKaaB4KlC', ''),
+(21, 'Eastern', '$2y$10$zqiyXktk3q1nb7xqun4i5eFZB4erJ.lpPjx19AQPPTYuv1HQ5hUhm', '');
 
 --
 -- Индексы сохранённых таблиц
@@ -201,7 +201,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT для таблицы `feedback`
@@ -231,7 +231,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

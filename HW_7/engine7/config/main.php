@@ -1,16 +1,19 @@
 <?php
 
 /* Файл констант */
+
 define('TEMPLATES_DIR', '../views/');
 define('LAYOUTS_DIR', 'layouts/');
 define('IMG_DIR', '/img/');
+define('MODULES_DIR', '../engine/modules/');
 
-/* DB config */
-define('HOST', 'localhost');
-define('USER', 'root');
-define('PASS', '');
-define('DB', 'shop');
+// DB config
+define('HOST', 'localhost'); // Хост БД
+define('USER', 'root'); // Пользователь
+define('PASS', ''); // Пароль
+define('DB', 'shop'); // Таблтца БД
 
+// Массив сообщений для страницы "Отзывы"
 const ERR_CODE = [
     null => "",
     "OK" => "Отзыв добавлен!",
@@ -23,13 +26,4 @@ const ERR_CODE = [
 
 // Подключение основных функций-модулей приложения
 // Можно подключить и в public/index.php
-require_once "../engine/controller.php";
-require_once "../engine/core.php";
-require_once "../engine/db.php";
-require_once "../engine/auth.php";
-require_once "../engine/goods.php";
-require_once "../engine/gallery.php";
-require_once "../engine/news.php";
-require_once "../engine/feedback.php";
-require_once "../engine/basket.php";
-require_once "../engine/log.php";
+require_once "../engine/lib_autoload.php";

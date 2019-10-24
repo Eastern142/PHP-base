@@ -4,7 +4,8 @@
         <label for="login">Логин</label>
         <input name="login" type="text" placeholder="Введите логин">
         <label for="password">Пароль</label>
-        <input name="password" type="password" placeholder="Введите пароль">
+        <input name="password" type="text" placeholder="Введите пароль">
         <input type="submit" name="registration" value="Продолжить">
     </form>
 </div>
+<p><?= $statusRegistration ?></p>
