@@ -79,16 +79,6 @@ function prepareVariables(string $page, string $action, string $id)
                 ]);
                 exit;
             }
-
-            if ($action == "send_order") {
-//                deleteFromBasket($id);
-
-                echo json_encode([
-                    "result" => 1,
-                    "message" => "Ваш заказ успешно офрмлен, в ближайшее время оператор с вами свяжется",
-                ]);
-                exit;
-            }
             break;
 
         case 'index': // http://shop/
@@ -133,14 +123,10 @@ function prepareVariables(string $page, string $action, string $id)
             break;
 
         case 'order': // http://shop/order/
-            if ($_POST['send_order']) {
-                $name = $_POST['name'];
-                $phone = $_POST['phone'];
-                $address = $_POST['address'];
-//                var_dump($name, $phone, $address);
-//                die;
-
-            }
+            $name = $_POST['name'];
+            $phone = $_POST['phone'];
+            $address = $_POST['address'];
+            getOrderStatus($params, $action, $name, $phone, $address);
             break;
 
     }

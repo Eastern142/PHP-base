@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 24 2019 г., 18:20
+-- Время создания: Окт 25 2019 г., 18:55
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.1.32
 
@@ -34,6 +34,18 @@ CREATE TABLE `basket` (
   `goods_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Дамп данных таблицы `basket`
+--
+
+INSERT INTO `basket` (`id`, `session_id`, `goods_id`) VALUES
+(56, 'dv6s1sqheagcg6rlhm8i1etgqrorbglu', 1),
+(57, 'dv6s1sqheagcg6rlhm8i1etgqrorbglu', 2),
+(60, '8pi048g51tin786jf0nnb6hmrrq4u8tg', 1),
+(61, '8pi048g51tin786jf0nnb6hmrrq4u8tg', 2),
+(62, '4s0m350boqjau6reeuq4brvsh3lqlhf9', 1),
+(63, '4s0m350boqjau6reeuq4brvsh3lqlhf9', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -52,7 +64,8 @@ CREATE TABLE `feedback` (
 
 INSERT INTO `feedback` (`id`, `name`, `feedback`) VALUES
 (1, 'Игорь', 'Отличный магазин. Доволен.'),
-(2, 'Дмитрий', 'Отличные ноутбуки и магазин.');
+(2, 'Дмитрий', 'Отличные ноутбуки и магазин.'),
+(5, 'Brian', 'Отличный магазин');
 
 -- --------------------------------------------------------
 
@@ -134,6 +147,28 @@ INSERT INTO `news` (`id`, `title`, `prevew`, `full`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `phone` text NOT NULL,
+  `address` text NOT NULL,
+  `session_id` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `phone`, `address`, `session_id`) VALUES
+(1, 'brian', '343', 'ЕКБ', '8pi048g51tin786jf0nnb6hmrrq4u8tg'),
+(2, 'brian', '343', 'ЕКБ', '4s0m350boqjau6reeuq4brvsh3lqlhf9');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -188,6 +223,12 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -201,13 +242,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT для таблицы `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `gallery`
@@ -225,6 +266,12 @@ ALTER TABLE `goods`
 -- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT для таблицы `orders`
+--
+ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
