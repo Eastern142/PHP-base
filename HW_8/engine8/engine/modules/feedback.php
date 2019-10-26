@@ -2,6 +2,7 @@
 
 /* Файл с функциями отзывов */
 
+// Функция CRUD (create, read, update, delete)
 function doFeedbackAction(&$params, $action, $id)
 {
     /* 2-й вариант подключения массива ошибок для страницы "Отзывы" */
@@ -11,7 +12,7 @@ function doFeedbackAction(&$params, $action, $id)
     // Подключение массива ошибок для страницы "Отзывы"
     $params['error'] = ERR_CODE[$_GET['status']];
 
-    // Значения по умолчанию.
+    // Значения по умолчанию
     $params['action'] = "add";
     $params['buttonText'] = "Добавить";
     $params['name'] = "";

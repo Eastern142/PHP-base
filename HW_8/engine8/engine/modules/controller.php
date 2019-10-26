@@ -45,7 +45,6 @@ function prepareVariables(string $page, string $action, string $id)
                 setcookie("hash", "", time() - 3600, "/"); // Удаляем cookie со значением переменной hash
                 header("Location: {$_SERVER['HTTP_REFERER']}"); // Перезагружаемся на предыдущую страницу
             }
-
             break;
 
         case 'registration': // http://shop/registration/
@@ -127,6 +126,10 @@ function prepareVariables(string $page, string $action, string $id)
             $phone = $_POST['phone'];
             $address = $_POST['address'];
             getOrderStatus($params, $action, $name, $phone, $address);
+            break;
+
+        case 'admin':
+
             break;
 
     }

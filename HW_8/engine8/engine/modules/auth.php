@@ -2,6 +2,8 @@
 
 /* Файл с функциями аутентификации */
 
+// Функция отправляет запрос в БД на обновление значения поля hash у пользователя и создает cookie со значением
+// переменной hash
 function makeHashAuth()
 {
     $hash = uniqid(rand(), true); // Записываем в переменную случайное значение hash
@@ -36,7 +38,7 @@ function auth(string $login, string $password)
     return false;
 }
 
-// Функция выполняется на каждой страние и проверяет авторизован ли кто либо
+// Функция выполняется на каждой страние и проверяет авторизован ли кто-либо
 function is_auth()
 {
     if (isset($_COOKIE["hash"])) { // Если пользователь установил флаг в поле "Запомнить" проверяем по cookie
@@ -57,6 +59,7 @@ function is_auth()
     return isset($_SESSION['login']) ? true : false; //
 }
 
+// Функция проверяет администратор ли выполнил вход в систему
 function is_admin()
 {
     return ($_SESSION['login'] == "admin") ? true : false;
@@ -68,13 +71,13 @@ function get_user()
     return isset($_SESSION['login']) ? $_SESSION['login'] : "Guest";
 }
 
-// Функция возвращает статусные сообщения
+// Функция возвращает результат аутентификации пользователя
 function getStatusRegistration($login, $password)
 {
-    if (empty($login) || empty($password)) {
-        return "!!! Проверьте введен ли логин и пароль";
-    } else {
-        return userRegistration($login, $password);
+    if (empty($login) || empty($password)) { // Если логин или пароль отсутствуют
+        return "!!! Проверьте введен ли логин и пароль"; // Оповещаем пользователя об этом
+    } else { // В противном случае
+        return userRegistration($login, $password); // Возвращаем результат регистрации пользователя в БД
     }
 }
 

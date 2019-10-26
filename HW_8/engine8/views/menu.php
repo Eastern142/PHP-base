@@ -17,6 +17,6 @@
     <a href="/feedback/">Отзывы</a>
     <a href="/basket/">Корзина <span id="count"><?= $count ?></span></a>
     <? if (is_admin()): ?>
-        <a href="/admin/">Админка</a>
+        <a href="/admin/">Администратор</a>
     <? endif; ?>
 </nav>

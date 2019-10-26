@@ -4,6 +4,6 @@
 
 $lib_file = array_splice(scandir(MODULES_DIR), 2); // Сканируем директорию где хранятся модули
 
-foreach ($lib_file as $file) {
+foreach ($lib_file as $file) { // Перебираем файлы и выполняем связанные с ними операции
     require_once MODULES_DIR . $file;
 }

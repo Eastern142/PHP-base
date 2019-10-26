@@ -15,7 +15,7 @@
     <input type="text" name="name" placeholder="Ваше имя">
     <input type="text" name="phone" placeholder="Телефон">
     <input type="text" name="address" placeholder="Адрес доставки">
-    <input type="submit" value="Продолжить">
+    <input type="submit" value="Оформить заказ">
 </form>
 <script>
   let buttons = document.querySelectorAll('.delete');
