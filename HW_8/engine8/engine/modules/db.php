@@ -8,7 +8,7 @@ function dumpLoad()
     $result = mysqli_query(getDb(), "SHOW TABLES FROM " . DB . ";");
 
     if (mysqli_num_rows($result) === 0) {
-        $dump = file_get_contents("../data/shop.sql");
+        $dump = file_get_contents("../data/powertoplay.sql");
         $a = 0;
         while ($b = strpos($dump, ";", $a + 1)) {
             $a = substr($dump, $a + 1, $b - $a);

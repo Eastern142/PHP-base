@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 25 2019 г., 18:55
+-- Время создания: Окт 27 2019 г., 09:15
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.1.32
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `shop`
+-- База данных: `powertoplay`
 --
 
 -- --------------------------------------------------------
@@ -44,7 +44,11 @@ INSERT INTO `basket` (`id`, `session_id`, `goods_id`) VALUES
 (60, '8pi048g51tin786jf0nnb6hmrrq4u8tg', 1),
 (61, '8pi048g51tin786jf0nnb6hmrrq4u8tg', 2),
 (62, '4s0m350boqjau6reeuq4brvsh3lqlhf9', 1),
-(63, '4s0m350boqjau6reeuq4brvsh3lqlhf9', 2);
+(63, '4s0m350boqjau6reeuq4brvsh3lqlhf9', 2),
+(64, 'f448kr8metoo03ipgetb4tldc01elegr', 1),
+(65, '45lrjok2ao6aaodn0f0hfoc4h2q2un3a', 1),
+(66, '45lrjok2ao6aaodn0f0hfoc4h2q2un3a', 2),
+(67, 'ccmafn8s49m4tgi8q22eqs4f7g757r12', 1);
 
 -- --------------------------------------------------------
 
@@ -65,7 +69,8 @@ CREATE TABLE `feedback` (
 INSERT INTO `feedback` (`id`, `name`, `feedback`) VALUES
 (1, 'Игорь', 'Отличный магазин. Доволен.'),
 (2, 'Дмитрий', 'Отличные ноутбуки и магазин.'),
-(5, 'Brian', 'Отличный магазин');
+(5, 'Brian', 'Отличный магазин. Всем рекомендую'),
+(6, 'Ирина', 'Хорошие компьютеры.');
 
 -- --------------------------------------------------------
 
@@ -84,7 +89,7 @@ CREATE TABLE `gallery` (
 --
 
 INSERT INTO `gallery` (`id`, `filename`, `likes`) VALUES
-(1, 'GT63TITAN1.png', 7),
+(1, 'GT63TITAN1.png', 10),
 (2, 'GT63TITAN2.png', 6),
 (3, 'GT63TITAN3.png', 1),
 (4, 'GT63TITAN4.png', 0),
@@ -164,7 +169,9 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `name`, `phone`, `address`, `session_id`) VALUES
 (1, 'brian', '343', 'ЕКБ', '8pi048g51tin786jf0nnb6hmrrq4u8tg'),
-(2, 'brian', '343', 'ЕКБ', '4s0m350boqjau6reeuq4brvsh3lqlhf9');
+(3, 'Игорь', '12345', 'Екатеринбург', 'f448kr8metoo03ipgetb4tldc01elegr'),
+(4, 'Ирина', '343', 'Екатеринбург', '45lrjok2ao6aaodn0f0hfoc4h2q2un3a'),
+(5, 'Олег', '343', 'Москва', 'ccmafn8s49m4tgi8q22eqs4f7g757r12');
 
 -- --------------------------------------------------------
 
@@ -186,7 +193,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `login`, `password`, `hash`) VALUES
 (1, 'admin', '$2y$10$ER/3u9uaqEQ/sKN/9/ynVOCCBSvRFgJiWNCYCHXyZuRXGt8EnKM0i', '7411374705daf19495497e1.21344534'),
 (20, 'Brian', '$2y$10$tc88kfUaZ2ywJ6h6lDvEn.wGxr/DtTkAfy2EApkBnz.iwKaaB4KlC', ''),
-(21, 'Eastern', '$2y$10$zqiyXktk3q1nb7xqun4i5eFZB4erJ.lpPjx19AQPPTYuv1HQ5hUhm', '');
+(21, 'Eastern', '$2y$10$zqiyXktk3q1nb7xqun4i5eFZB4erJ.lpPjx19AQPPTYuv1HQ5hUhm', ''),
+(22, 'Ирина', '$2y$10$0QemIMQ/3bmiPOzTare36Oln5v6BQK2KnglyLY7Miod9rbeBF.zeK', '');
 
 --
 -- Индексы сохранённых таблиц
@@ -242,13 +250,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT для таблицы `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `gallery`
@@ -272,13 +280,13 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
