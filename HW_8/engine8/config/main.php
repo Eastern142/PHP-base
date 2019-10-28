@@ -11,7 +11,7 @@ define('MODULES_DIR', '../engine/modules/');
 define('HOST', 'localhost'); // Хост БД
 define('USER', 'root'); // Пользователь
 define('PASS', ''); // Пароль
-define('DB', 'powertoplay'); // Таблтца БД
+define('DB', 'powertoplay1'); // Таблтца БД
 
 // Массив сервисных сообщений
 const ERR_CODE = [
