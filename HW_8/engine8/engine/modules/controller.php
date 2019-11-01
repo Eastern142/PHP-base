@@ -107,7 +107,7 @@ function prepareVariables(string $page, string $action, string $id)
 
         case 'newspage': // http://shop/newspage/
             $content = getNewsContent($id);
-            $params['prevew'] = $content['prevew'];
+            $params['preview'] = $content['preview'];
             $params['full'] = $content['full'];
             break;
 

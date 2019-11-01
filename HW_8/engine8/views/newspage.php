@@ -1,4 +1,4 @@
 <div>
-    <h3><?= $prevew ?></h3>
+    <h3><?= $preview ?></h3>
     <p><?= $full ?></p>
 </div>
