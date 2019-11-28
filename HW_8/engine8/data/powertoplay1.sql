@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 01 2019 г., 15:27
+-- Время создания: Ноя 28 2019 г., 19:57
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.1.32
 
@@ -103,7 +103,12 @@ INSERT INTO `gallery` (`id`, `filename`, `likes`) VALUES
 (12, 'GT83TITAN2.png', 0),
 (13, 'GT83TITAN3.png', 0),
 (14, 'GT83TITAN4.png', 0),
-(15, 'GT83TITAN5.png', 1);
+(15, 'GT83TITAN5.png', 1),
+(16, 'GT76TITAN1.png', NULL),
+(17, 'GT76TITAN2.png', NULL),
+(18, 'GT76TITAN3.png', NULL),
+(19, 'GT76TITAN4.png', NULL),
+(20, 'GT76TITAN5.png', NULL);
 
 -- --------------------------------------------------------
 
@@ -125,8 +130,9 @@ CREATE TABLE `goods` (
 
 INSERT INTO `goods` (`id`, `image`, `name`, `price`, `description`) VALUES
 (1, 'GT63TITAN1.png', 'MSI GT63 TITAN', 2500, 'Представляем ноутбук MSI с шестиядерным процессором Intel: прирост производительности за счет дополнительных ядер достигает 40%. Чем больше ядер, тем комфортнее играть!'),
-(2, 'GT75TITAN1.png', 'MSI GT75 TITAN', 2700, 'MSI GT75 Titan — машина с механической клавиатурой для гейминга высокого уровня, где эргономика и высокая производительность может стоить победы.'),
-(3, 'GT83TITAN1.png', 'MSI GT83 TITAN', 3200, 'Эта геймерская платформа построена на самом последнем процессоре Intel Core i7-8850H с максимальной тактовой частотой 4,3 ГГц и двух топовых видеокартах GeForce GTX 1080.');
+(2, 'GT75TITAN1.png', 'MSI GT75 TITAN', 2700, 'MSI GT75 TITAN — машина с механической клавиатурой для гейминга высокого уровня, где эргономика и высокая производительность может стоить победы.'),
+(3, 'GT83TITAN1.png', 'MSI GT83 TITAN', 3200, 'Эта геймерская платформа построена на самом последнем процессоре Intel Core i7-8850H с максимальной тактовой частотой 4,3 ГГц и двух топовых видеокартах GeForce GTX 1080.'),
+(20, 'GT76TITAN2.png', 'MSI GT76 TITAN', 2900, 'Новый ноутбук GT76 TITAN – самый мощный в серии «титанов».');
 
 -- --------------------------------------------------------
 
@@ -262,13 +268,13 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT для таблицы `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT для таблицы `goods`
 --
 ALTER TABLE `goods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT для таблицы `news`
